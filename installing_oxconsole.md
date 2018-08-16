@@ -13,6 +13,7 @@ It is a relatively small application so can safely be installed in your HOME dir
 At the time of writing, the current version is 7.20. These instructions are for that version.
 
 1. **Download the 64-bit RPM**
+
 Navigate to your home directory and download:
 
 ```
@@ -27,6 +28,7 @@ rpm2cpio oxcons-7.20-0.x86_64.rpm | cpio -idmv
 This will extract the files into a `usr` subdirectory within your HOME directory.
 
 4. **Move files to more suitable path** 
+
 Move the directory containing all the code and libraries to the 'root' of your HOME directory:
 
 ```
@@ -46,9 +48,9 @@ so that they are set every time you log in. This code will do that for you.
 
 ```
 cat >> ~/.bashrc << EOF
-export OX_DIR=/nobackup/issmcal
+export OX_DIR=$HOME
 export LD_LIBRARY_PATH=$OX_DIR/OxMetrics7/ox/bin64:$LD_LIBRARY_PATH
-export OX7PATH=$OX_DIR/OxMetrics7/ox/include:$HOME/OxMetrics7/ox
+export OX7PATH=$OX_DIR/OxMetrics7/ox/include:$OX_DIR/OxMetrics7/ox
 export PATH=$OX_DIR/OxMetrics7/ox/bin64:$PATH
 EOF
 ```
@@ -105,6 +107,3 @@ This is a sample submission script for OxConsole. Save it as `ox.sh` and submit 
 #Now run the job
 oxl.bin inputfile.ox > outputfile.txt
 ```
-
-8. Submit to queue from within preferred working directory:
-qsub ox.sh
